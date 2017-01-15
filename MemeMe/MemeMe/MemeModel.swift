@@ -13,8 +13,8 @@ import Foundation
 import UIKit
 
 struct MemeModel {
-    var upperText: String
-    var lowerText: String
-    var backgroundImage : UIImage
-    var memeImage : UIImage
+    let upperText: String
+    let lowerText: String
+    let backgroundImage : UIImage
+    let memeImage : UIImage
 }

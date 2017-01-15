@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var cameraButtonItem: UIBarButtonItem!
     @IBOutlet weak var albumButtonItem: UIBarButtonItem!
@@ -22,9 +22,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Check if the camera exists
-        cameraButtonItem.isEnabled = MemeMeUtils.isCameraAvailable()
-        
         //Setup delegate for text views
         lowerTextView.delegate = self
         upperTextView.delegate = self
@@ -36,32 +33,49 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
+        
+        //Check if the camera exists
+        cameraButtonItem.isEnabled = MemeMeUtils.isCameraAvailable()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeToKeyboardNotifications()
     }
-
+    
     @IBAction func cameraButtonPressed(_ sender: Any) {
         MemeMeUtils.openCamera(sourceController: self, delegate: self)
     }
     
     @IBAction func shareButtonPressed(_ sender: Any) {
-        let model = MemeModel(
-            upperText: upperTextView.text!,
-            lowerText: lowerTextView.text!,
-            backgroundImage: memeImage.image!,
-            memeImage: produceImage()
-        )
+        let producedImage = produceImage()!
+        let activityViewController = UIActivityViewController(activityItems: [producedImage], applicationActivities: nil)
         
-        let activityViewController = UIActivityViewController(activityItems: [model.memeImage], applicationActivities: nil)
+        //Callback for when the user finished sharing the image
+        activityViewController.completionWithItemsHandler = {
+            (activity, completed, items, error) -> Void in
+            if completed {
+                //Create the Meme Model
+                let memeModel = MemeModel(
+                    upperText: self.upperTextView.text!,
+                    lowerText: self.lowerTextView.text!,
+                    backgroundImage: self.memeImage.image!,
+                    memeImage: producedImage
+                )
+                
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
         self.present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonPressed(_ sender: Any) {
         memeImage.image = nil
         shareButton.isEnabled = false
+        
+        upperTextView.restorePristine()
+        lowerTextView.restorePristine()
     }
     
     @IBAction func albumButtonPressed(_ sender: Any) {

@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Meme Editor View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="Meme Editor View Controller" customClass="MemeEditorViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -41,12 +41,12 @@
                                                     <navigationItem id="7Mj-JR-g7m">
                                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="lZT-4h-QoQ">
                                                             <connections>
-                                                                <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="noL-Ip-4xL"/>
+                                                                <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="t90-wX-ZlJ"/>
                                                             </connections>
                                                         </barButtonItem>
                                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="o8u-Rl-bpu">
                                                             <connections>
-                                                                <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" id="TKJ-aA-gfg"/>
+                                                                <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" id="IMk-f3-6m2"/>
                                                             </connections>
                                                         </barButtonItem>
                                                     </navigationItem>
@@ -80,13 +80,13 @@
                                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="xdc-Gj-CzI"/>
                                                     <barButtonItem systemItem="camera" id="Lta-Jf-gZD">
                                                         <connections>
-                                                            <action selector="cameraButtonPressed:" destination="BYZ-38-t0r" id="Tiz-j2-mE0"/>
+                                                            <action selector="cameraButtonPressed:" destination="BYZ-38-t0r" id="GJx-Pw-Vyp"/>
                                                         </connections>
                                                     </barButtonItem>
                                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Fgl-Ld-Rfo"/>
                                                     <barButtonItem title="Album" id="8dD-qX-utI">
                                                         <connections>
-                                                            <action selector="albumButtonPressed:" destination="BYZ-38-t0r" id="fU2-h4-gZN"/>
+                                                            <action selector="albumButtonPressed:" destination="BYZ-38-t0r" id="dVj-cb-TcW"/>
                                                         </connections>
                                                     </barButtonItem>
                                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="DGc-Xe-h0G"/>
@@ -111,14 +111,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="albumButtonItem" destination="8dD-qX-utI" id="NJT-W8-QZ6"/>
-                        <outlet property="cameraButtonItem" destination="Lta-Jf-gZD" id="DeO-VG-0hD"/>
-                        <outlet property="lowerTextView" destination="3cW-Cv-iqp" id="ahw-fu-FIE"/>
-                        <outlet property="memeImage" destination="EuV-Mz-J2w" id="SzM-jT-Xue"/>
-                        <outlet property="navbar" destination="NLO-Ss-sfb" id="c8n-wt-Eq8"/>
-                        <outlet property="shareButton" destination="lZT-4h-QoQ" id="w5l-na-HzD"/>
-                        <outlet property="toolbar" destination="ZwX-3z-MMz" id="HTX-Ou-kZw"/>
-                        <outlet property="upperTextView" destination="ste-xO-hFH" id="jnj-KH-E9e"/>
+                        <outlet property="albumButtonItem" destination="8dD-qX-utI" id="Jcn-Im-lCO"/>
+                        <outlet property="cameraButtonItem" destination="Lta-Jf-gZD" id="L04-qj-ez6"/>
+                        <outlet property="lowerTextView" destination="3cW-Cv-iqp" id="eet-7x-chF"/>
+                        <outlet property="memeImage" destination="EuV-Mz-J2w" id="au4-iw-BbN"/>
+                        <outlet property="navbar" destination="NLO-Ss-sfb" id="DXW-Rt-ax7"/>
+                        <outlet property="shareButton" destination="lZT-4h-QoQ" id="BvB-Pg-CZU"/>
+                        <outlet property="toolbar" destination="ZwX-3z-MMz" id="geE-e6-kA8"/>
+                        <outlet property="upperTextView" destination="ste-xO-hFH" id="ruF-11-bGH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
